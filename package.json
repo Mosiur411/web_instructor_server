@@ -1,0 +1,40 @@
+{
+  "name": "retwho-server",
+  "version": "1.0.0",
+  "description": "1. [User Endpoints][user]\r 2. [Shop Endpoints][shop]\r 3. [Department Endpoints][department]\r 4. [Product Endpoints][product]\r 5. [Sale Endpoints][sale]\r 6. [Cart Endpoints][cart]\r 7. [POS Endpoints][pos]\r 8. [Request Endpoints][request]\r 9. [Public Endpoints][public]\r     1. [Promo Endpoints][promo]\r     2. [Info Endpoints][info]\r     3. [Conatct Message Endpoints][contact]",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon --trace-warnings index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mosiur411/Retwho-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mosiur411/Retwho-server/issues"
+  },
+  "homepage": "https://github.com/Mosiur411/Retwho-server#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^1.20.2",
+    "cloudinary": "^1.32.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^6.7.2",
+    "multer": "^2.0.1"
+  }
+}
