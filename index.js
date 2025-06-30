@@ -35,9 +35,7 @@ if (cluster.isMaster) {
   const server = http.createServer(app);
   const corsOptions = {
     origin: [
-      'https://aizaflab.retwho.com',
-      'https://www.aizaflab.retwho.com',
-      'http://localhost:8001',
+      'http://localhost:5173',
     ],
     methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
     credentials: true
@@ -56,7 +54,6 @@ if (cluster.isMaster) {
 
   app.use(limiter);
   app.use(cors(corsOptions));
-  app.use("/uploads", express.static("uploads"));
 
   app.use('/auth', authRoutes);
   app.use('/user', authRqeuired, userRoutes);
