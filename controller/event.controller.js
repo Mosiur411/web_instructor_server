@@ -37,10 +37,17 @@ const getAlleventController = async (req, res) => {
     try {
         const { search, filterDate, filterRange } = req.query;
         let query = {};
+        // console.log(search)
 
-        if (search) {
-            query.eventTitle = { $regex: search, $options: 'i' };
-        }
+  if (search) {
+  const searchableFields = ['eventTitle', 'location', 'description'];
+
+  query.$or = searchableFields.map((field) => ({
+    [field]: { $regex: new RegExp(search, 'i') },
+  }));
+}
+
+
 
         if (filterDate) {
             const today = new Date();
@@ -75,7 +82,7 @@ const getAlleventController = async (req, res) => {
         }
 
         const events = await EventModel.find(query)
-            .sort({ date: -1, time: -1 })
+            .sort({ date: 1, time: 1 })
             .populate('postedBy', 'name email photoURL');
 
         return res.status(200).json({ events });
@@ -134,7 +141,7 @@ const updateeventController = async (req, res) => {
         const userId = req.user._id;
 
         const event = await EventModel.findOne({ _id: eventId, postedBy: userId });
-
+wddw
         if (!event) {
             return res.status(404).json({ message: 'Event not found or you are not authorized to update it.' });
         }
