@@ -23,6 +23,7 @@ const { authRqeuired } = require('./middleware/auth.middleware');
   const server = http.createServer(app);
   const corsOptions = {
     origin: [
+      'https://web-instructor-front.vercel.app',
       'http://localhost:5173',
     ],
     methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
