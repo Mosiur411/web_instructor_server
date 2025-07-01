@@ -141,7 +141,7 @@ const updateeventController = async (req, res) => {
         const userId = req.user._id;
 
         const event = await EventModel.findOne({ _id: eventId, postedBy: userId });
-wddw
+
         if (!event) {
             return res.status(404).json({ message: 'Event not found or you are not authorized to update it.' });
         }
