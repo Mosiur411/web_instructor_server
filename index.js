@@ -4,14 +4,11 @@ const cloudinary = require('cloudinary').v2;
 const bodyParser = require('body-parser');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
-const cluster = require('cluster');
-const os = require('os');
 const cookieParser = require("cookie-parser");
 const http = require('http');
 
 require('dotenv').config();
 
-const numCPUs = os.cpus().length;
 
 const { connectDatabase } = require('./config/db.config');
 const { authRoutes } = require('./routes/auth.routes');
@@ -19,16 +16,7 @@ const { eventRoutes } = require('./routes/event.routes');
 const { userRoutes } = require('./routes/user.routes');
 const { authRqeuired } = require('./middleware/auth.middleware');
 
-if (cluster.isMaster) {
-  for (let i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
 
-  cluster.on('exit', (worker, code, signal) => {
-    cluster.fork();
-  });
-
-} else {
   const app = express();
   const port = process.env.PORT || 5003;
 
@@ -75,4 +63,3 @@ if (cluster.isMaster) {
   server.listen(port, () => {
     console.log(`Worker ${process.pid} is running on http://localhost:${port}`);
   });
-}
